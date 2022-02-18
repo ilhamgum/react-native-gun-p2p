@@ -21,7 +21,11 @@ export default function Home({ navigation }) {
         >
           <Text style={styles.loginText}>Sign In using ...</Text>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.6} style={styles.signupButton}>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          style={styles.signupButton}
+          onPress={() => navigation.navigate("SignIn")}
+        >
           <Text style={styles.signupText}>Just Sign Up</Text>
         </TouchableOpacity>
       </View>
