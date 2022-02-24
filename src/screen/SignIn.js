@@ -1,52 +1,50 @@
 import React from "react";
-import {
-  Button,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-} from "react-native";
+import { Pressable, Text, SafeAreaView, View, TextInput } from "react-native";
+
+import { SignStyles } from "./Styles";
 
 export default function SignIn({ navigation }) {
+  const [username, onUsernameChange] = React.useState("");
+  const [password, onPasswordChange] = React.useState("");
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Pressable
-        style={styles.backHome}
-        onPress={() => navigation.navigate("Home")}
-      >
-        <Text style={styles.backHomeText}>Back Home</Text>
-      </Pressable>
+    <SafeAreaView style={SignStyles.container}>
+      <View style={SignStyles.formWrap}>
+        <Text style={SignStyles.title}>Sign In</Text>
+        <TextInput
+          placeholder="username"
+          style={SignStyles.textInput}
+          value={username}
+          onChangeText={onUsernameChange}
+        />
+        <TextInput
+          secureTextEntry={true}
+          placeholder="password"
+          style={SignStyles.textInput}
+          value={password}
+          onChangeText={onPasswordChange}
+        />
+        <View style={SignStyles.buttonWrap}>
+          <View style={SignStyles.pressableView}>
+            <Pressable
+              style={SignStyles.button}
+              android_ripple={{ color: "black" }}
+              onPress={() => navigation.navigate("Home")}
+            >
+              <Text style={SignStyles.buttonText}>Back Home</Text>
+            </Pressable>
+          </View>
+          <View style={SignStyles.pressableView}>
+            <Pressable
+              style={SignStyles.button}
+              android_ripple={{ color: "black" }}
+              onPress={() => navigation.navigate("ChatRoom")}
+            >
+              <Text style={SignStyles.buttonText}>Continue</Text>
+            </Pressable>
+          </View>
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-  backHome: {
-    backgroundColor: "#476CF0",
-    minWidth: 50,
-    minHeight: 50,
-    borderRadius: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.7,
-    shadowRadius: 5,
-
-    elevation: 17,
-  },
-  backHomeText: {
-    color: "#fff",
-  },
-});
