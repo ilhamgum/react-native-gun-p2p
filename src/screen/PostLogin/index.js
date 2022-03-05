@@ -1,9 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import ChatRoom from "./ChatRoom";
+import Profile from "./Profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -14,8 +13,7 @@ export default function PostLogin() {
       screenOptions={{ headerShown: false }}
     >
       <Tab.Screen name="ChatRoom" component={ChatRoom} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 }
-
-const styles = StyleSheet.create({});

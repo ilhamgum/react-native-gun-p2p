@@ -1,5 +1,14 @@
 import { StyleSheet, Platform, StatusBar } from "react-native";
 
+// Basic style
+export const BasicStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+});
+
 // Home Screen
 export const HomeStyles = StyleSheet.create({
   container: {
@@ -60,11 +69,6 @@ export const HomeStyles = StyleSheet.create({
 
 // SignIn & SignUp Screen
 export const SignStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
   formWrap: {
     marginVertical: "50%",
     marginHorizontal: "10%",
@@ -106,11 +110,6 @@ export const SignStyles = StyleSheet.create({
 });
 
 export const ChatRoomStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
   header: {
     height: "9%",
     marginBottom: 20,

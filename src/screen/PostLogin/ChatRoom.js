@@ -9,10 +9,11 @@ import {
 
 // Styles
 import { ChatRoomStyles } from "../Styles";
+import { BasicStyles } from "../Styles";
 
 export default function ChatRoom({ route, navigation }) {
   return (
-    <SafeAreaView style={ChatRoomStyles.container}>
+    <SafeAreaView style={BasicStyles.container}>
       <View style={ChatRoomStyles.header}>
         <View style={ChatRoomStyles.headerWrap}>
           <Pressable onPress={() => alert("pressed")}>
