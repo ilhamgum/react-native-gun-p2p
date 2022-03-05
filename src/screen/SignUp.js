@@ -37,7 +37,9 @@ export default function SignIn({ navigation }) {
             <Pressable
               style={SignStyles.button}
               android_ripple={{ color: "black" }}
-              onPress={() => navigation.navigate("ChatRoom")}
+              onPress={() =>
+                navigation.navigate("ChatRoom", { name: `${username}` })
+              }
             >
               <Text style={SignStyles.buttonText}>Continue</Text>
             </Pressable>

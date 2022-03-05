@@ -58,7 +58,7 @@ export const HomeStyles = StyleSheet.create({
   },
 });
 
-// SignIn Screen
+// SignIn & SignUp Screen
 export const SignStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -102,5 +102,32 @@ export const SignStyles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 50,
     paddingHorizontal: 20,
+  },
+});
+
+export const ChatRoomStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+  header: {
+    height: "9%",
+    marginBottom: 20,
+    justifyContent: "center",
+    paddingHorizontal: 10,
+    backgroundColor: "#fff",
+    elevation: 1,
+    marginTop: -2,
+  },
+  headerWrap: {
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+  headerImage: {
+    height: 40,
+    width: 40,
+    borderRadius: 50,
   },
 });
