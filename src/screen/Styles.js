@@ -110,13 +110,13 @@ export const SignStyles = StyleSheet.create({
 });
 
 export const ChatRoomStyles = StyleSheet.create({
+  // header
   header: {
     height: "9%",
-    marginBottom: 20,
     justifyContent: "center",
     paddingHorizontal: 10,
     backgroundColor: "#fff",
-    elevation: 1,
+    elevation: 5,
     marginTop: -2,
   },
   headerWrap: {
@@ -128,5 +128,36 @@ export const ChatRoomStyles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 50,
+  },
+  // flatlist
+  item: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+    alignItems: "center",
+  },
+  messageContainer: {
+    marginHorizontal: 10,
+  },
+  name: {
+    fontSize: 18,
+    marginBottom: 3,
+  },
+  message: {
+    fontSize: 16,
+    color: "#7E7E7E",
+  },
+  profilePhotoContainer: {
+    width: 50,
+    height: 50,
+    borderWidth: 1,
+    borderRadius: 50,
+    elevation: 1,
+  },
+  profilePhoto: {
+    height: 50,
   },
 });
