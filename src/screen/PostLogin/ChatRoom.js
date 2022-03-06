@@ -65,7 +65,7 @@ export default function ChatRoom({ route, navigation }) {
       {/* header */}
       <View style={ChatRoomStyles.header}>
         <View style={ChatRoomStyles.headerWrap}>
-          <Pressable onPress={() => alert("pressed")}>
+          <Pressable onPress={() => navigation.navigate("Profile")}>
             <Image
               source={{ uri: "https://picsum.photos/200" }}
               style={ChatRoomStyles.headerImage}
