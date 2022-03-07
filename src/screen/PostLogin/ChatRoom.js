@@ -61,7 +61,7 @@ export default function ChatRoom({ route, navigation }) {
     <Item name={item.name} message={item.message} />
   );
   return (
-    <SafeAreaView style={BasicStyles.container}>
+    <SafeAreaView style={ChatRoomStyles.container}>
       {/* header */}
       <View style={ChatRoomStyles.header}>
         <View style={ChatRoomStyles.headerWrap}>

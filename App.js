@@ -9,7 +9,8 @@ const Stack = createNativeStackNavigator();
 import Home from "./src/screen/Home";
 import SignIn from "./src/screen/SignIn";
 import SignUp from "./src/screen/SignUp";
-import PostLogin from "./src/screen/PostLogin/";
+import postlogin from "./src/screen/postlogin/";
+
 import { MenuProvider } from "react-native-popup-menu";
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="PostLogin" component={PostLogin} />
+          <Stack.Screen name="postlogin" component={postlogin} />
         </Stack.Navigator>
       </NavigationContainer>
     </MenuProvider>

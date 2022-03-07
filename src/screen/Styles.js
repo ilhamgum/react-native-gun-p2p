@@ -110,14 +110,17 @@ export const SignStyles = StyleSheet.create({
 });
 
 export const ChatRoomStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#F3FAFE",
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
   // header
   header: {
     height: "9%",
     justifyContent: "center",
     paddingHorizontal: 10,
     backgroundColor: "#fff",
-    elevation: 5,
-    marginTop: -2,
   },
   headerWrap: {
     alignItems: "center",
@@ -133,7 +136,6 @@ export const ChatRoomStyles = StyleSheet.create({
   item: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#fff",
     padding: 20,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
