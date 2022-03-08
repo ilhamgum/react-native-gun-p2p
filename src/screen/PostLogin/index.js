@@ -7,8 +7,6 @@ import { View } from "react-native";
 import ChatRoom from "./ChatRoom";
 import Profile from "./Profile";
 
-const Tab = createBottomTabNavigator();
-
 function MyTabBar() {
   return (
     <View
@@ -34,19 +32,36 @@ function MyTabBar() {
   );
 }
 
+const Tab = createBottomTabNavigator();
+
 export default function PostLogin() {
   return (
     <Tab.Navigator
+      // tabBar={() => <MyTabBar />}
       initialRouteName="ChatRoom"
-      tabBar={() => <MyTabBar />}
       screenOptions={{
         headerShown: false,
-        // tabBarIcon: ({ color, size }) => (
-        //   <Ionicons name="chatbox" color={color} size={size} />
-        // ),
-        // tabBarActiveTintColor: "#599CFF",
-        // tabBarActiveBackgroundColor: "#EBEFFF",
-        // tabBarInactiveTintColor: "gray",
+        tabBarStyle: {
+          position: "absolute",
+          bottom: 25,
+          left: 20,
+          right: 20,
+          elevation: 0,
+          borderRadius: 15,
+          height: "10%",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+
+          elevation: 5,
+        },
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: "#599CFF",
+        tabBarInactiveTintColor: "gray",
       }}
     >
       <Tab.Screen
@@ -54,6 +69,9 @@ export default function PostLogin() {
         component={ChatRoom}
         options={{
           tabBarLabel: "Chat",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="chatbox" color={color} size={size} />
+          ),
         }}
       />
       <Tab.Screen
@@ -61,6 +79,9 @@ export default function PostLogin() {
         component={Profile}
         options={{
           tabBarLabel: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" color={color} size={size} />
+          ),
         }}
       />
     </Tab.Navigator>

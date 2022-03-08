@@ -90,11 +90,22 @@ export default function ChatRoom({ route, navigation }) {
         </View>
       </View>
       {/* chat flatlist */}
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
+      <View
+        style={{
+          marginTop: 5,
+          backgroundColor: "#F3FAFE",
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30,
+          height: "100%",
+          elevation: 15,
+        }}
+      >
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
     </SafeAreaView>
   );
 }

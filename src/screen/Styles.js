@@ -112,12 +112,12 @@ export const SignStyles = StyleSheet.create({
 export const ChatRoomStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F3FAFE",
+    backgroundColor: "#fff",
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   // header
   header: {
-    height: "9%",
+    height: "10%",
     justifyContent: "center",
     paddingHorizontal: 10,
     backgroundColor: "#fff",
@@ -132,7 +132,7 @@ export const ChatRoomStyles = StyleSheet.create({
     width: 40,
     borderRadius: 50,
   },
-  // flatlist
+  // chat flatlist
   item: {
     flex: 1,
     flexDirection: "row",
