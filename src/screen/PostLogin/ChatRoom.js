@@ -1,12 +1,10 @@
 import React from "react";
 import {
   Image,
-  StyleSheet,
   Pressable,
   SafeAreaView,
   Text,
   View,
-  StatusBar,
   FlatList,
 } from "react-native";
 import {
@@ -18,7 +16,6 @@ import {
 
 // Styles
 import { ChatRoomStyles } from "../Styles";
-import { BasicStyles } from "../Styles";
 
 const DATA = [
   {

@@ -1,43 +1,47 @@
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 
 // screens
 import ChatRoom from "./ChatRoom";
 import Profile from "./Profile";
 
-function MyTabBar() {
+// new chat custom button
+const NewChatButton = ({ children, onPress }) => {
   return (
-    <View
-      style={{
-        backgroundColor: "#F3FAFE",
-        height: 70,
-      }}
+    <TouchableOpacity
+      style={{ top: -30, justifyContent: "center", alignItems: "center" }}
+      onPress={onPress}
     >
       <View
         style={{
+          width: 70,
           height: 70,
-          marginTop: 10,
-          elevation: 10,
-          backgroundColor: "#fff",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
+          borderRadius: 35,
+          backgroundColor: "#599CFF",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+
+          elevation: 5,
         }}
-      ></View>
-    </View>
+      >
+        {children}
+      </View>
+    </TouchableOpacity>
   );
-}
+};
 
 const Tab = createBottomTabNavigator();
 
 export default function PostLogin() {
   return (
     <Tab.Navigator
-      // tabBar={() => <MyTabBar />}
       initialRouteName="ChatRoom"
       screenOptions={{
         headerShown: false,
@@ -72,6 +76,15 @@ export default function PostLogin() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="chatbox" color={color} size={size} />
           ),
+        }}
+      />
+      <Tab.Screen
+        name="AddChat"
+        component={Profile}
+        options={{
+          tabBarShowLabel: false,
+          tabBarIcon: () => <Ionicons name="add" color={"#fff"} size={40} />,
+          tabBarButton: (props) => <NewChatButton {...props} />,
         }}
       />
       <Tab.Screen
