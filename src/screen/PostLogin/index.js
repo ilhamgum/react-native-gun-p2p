@@ -1,16 +1,18 @@
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 
 // screens
 import ChatRoom from "./ChatRoom";
 import Profile from "./Profile";
+import AddNewChat from "./AddNewChat";
 
 // new chat custom button
 const NewChatButton = ({ children, onPress }) => {
   return (
     <TouchableOpacity
+      activeOpacity={0.8}
       style={{ top: -30, justifyContent: "center", alignItems: "center" }}
       onPress={onPress}
     >
@@ -80,7 +82,7 @@ export default function PostLogin() {
       />
       <Tab.Screen
         name="AddChat"
-        component={Profile}
+        component={AddNewChat}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: () => <Ionicons name="add" color={"#fff"} size={40} />,
