@@ -39,7 +39,7 @@ export default function SignIn({ navigation }) {
               style={SignStyles.button}
               android_ripple={{ color: "black" }}
               onPress={() =>
-                navigation.navigate("postlogin", {
+                navigation.navigate("TabRouter", {
                   screen: "ChatRoom",
                   params: { name: username },
                 })

@@ -4,9 +4,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, TouchableOpacity } from "react-native";
 
 // screens
-import ChatRoom from "./ChatRoom";
-import Profile from "./Profile";
-import AddNewChat from "./AddNewChat";
+import ChatRoom from "../screen/postlogin/ChatRoom";
+import Profile from "../screen/postlogin/Profile";
+import AddNewChat from "../screen/postlogin/AddNewChat";
 
 // new chat custom button
 const NewChatButton = ({ children, onPress }) => {

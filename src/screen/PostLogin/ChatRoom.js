@@ -41,9 +41,16 @@ const Item = ({ name, message }) => (
     <View style={ChatRoomStyles.item}>
       <View style={ChatRoomStyles.profilePhotoContainer}>
         <Pressable
-          android_ripple={{ color: "#eee", borderless: true }}
+          onPress={() => console.log({ name })}
+          android_ripple={{ color: "#fff", borderless: true }}
           style={ChatRoomStyles.profilePhoto}
-        ></Pressable>
+        >
+          <Image
+            source={{ uri: `https://picsum.photos/200/300?random=${name}` }}
+            style={{ height: 50, width: 50, resizeMode: "cover" }}
+            onp
+          />
+        </Pressable>
       </View>
       <View style={ChatRoomStyles.messageContainer}>
         <Text style={ChatRoomStyles.name}>{name}</Text>
