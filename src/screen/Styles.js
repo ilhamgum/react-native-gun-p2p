@@ -155,7 +155,6 @@ export const ChatRoomStyles = StyleSheet.create({
   profilePhotoContainer: {
     width: 50,
     height: 50,
-    borderWidth: 1,
     borderRadius: 50,
     elevation: 1,
     overflow: "hidden",
