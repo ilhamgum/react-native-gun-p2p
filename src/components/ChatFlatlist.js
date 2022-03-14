@@ -11,7 +11,7 @@ import {
 // styles
 import { ChatRoomStyles } from "../screen/Styles";
 
-export default function ChatFlatlist({ name, message }) {
+export default function ChatFlatlist({ name, message, picture }) {
   return (
     <Pressable onPress={() => console.log({ name })}>
       <View style={ChatRoomStyles.item}>
@@ -22,7 +22,7 @@ export default function ChatFlatlist({ name, message }) {
             style={ChatRoomStyles.profilePhoto}
           >
             <Image
-              source={{ uri: `https://picsum.photos/200/300?random=${name}` }}
+              source={{ uri: `${picture}` }}
               style={{ height: 50, width: 50, resizeMode: "cover" }}
               onp
             />

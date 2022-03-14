@@ -1,28 +1,22 @@
 import React from "react";
 import { SafeAreaView, View, FlatList } from "react-native";
 
-// dummy data
-import { dataUser } from "../../assets/dummy";
-
-// comps
-import ChatFlatlist from "../../components/ChatFlatlist";
-import Header from "../../components/Header";
-
 // styles
 import { ChatRoomStyles } from "../Styles";
+
+// components
+import ChatFlatlist from "../../components/ChatFlatlist";
+import Header from "../../components/Header";
 
 export default function ChatRoom({ route, navigation }) {
   const [userData, setUserData] = React.useState([]);
 
-  const renderItem = ({ item }) => (
-    <ChatFlatlist name={item.name.first} message={item.gender} />
-  );
-
   React.useEffect(() => {
-    fetch("https://randomuser.me/api/?results=5&exc=login,location,registered")
+    fetch("https://randomuser.me/api/?results=10&exc=login,location,registered")
       .then((res) => res.json())
       .then((data) => {
         setUserData(data.results);
+        console.log(data.results);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -43,7 +37,13 @@ export default function ChatRoom({ route, navigation }) {
       >
         <FlatList
           data={userData}
-          renderItem={renderItem}
+          renderItem={({ item }) => (
+            <ChatFlatlist
+              name={item.name.first}
+              message={item.gender}
+              picture={item.picture.medium}
+            />
+          )}
           keyExtractor={(item) => item.name.first}
         />
       </View>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Button } from "react-native";
 
 // screens
 import ChatRoom from "../screen/postlogin/ChatRoom";
@@ -84,6 +84,10 @@ export default function PostLogin() {
         name="AddChat"
         component={AddNewChat}
         options={{
+          headerShown: true,
+          headerTitle: () => (
+            <Button onPress={() => alert("This is a button!")} title="Back" />
+          ),
           tabBarShowLabel: false,
           tabBarIcon: () => <Ionicons name="add" color={"#fff"} size={40} />,
           tabBarButton: (props) => <NewChatButton {...props} />,
