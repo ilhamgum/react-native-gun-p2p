@@ -1,9 +1,8 @@
 import React from "react";
-import { SafeAreaView, View, FlatList, VirtualizedList } from "react-native";
+import { SafeAreaView, View, FlatList } from "react-native";
 
 // dummy data
 import { dataUser } from "../../assets/dummy";
-import { addUser } from "../../assets/dummy";
 
 // comps
 import ChatFlatlist from "../../components/ChatFlatlist";
@@ -13,9 +12,21 @@ import Header from "../../components/Header";
 import { ChatRoomStyles } from "../Styles";
 
 export default function ChatRoom({ route, navigation }) {
+  const [userData, setUserData] = React.useState([]);
+
   const renderItem = ({ item }) => (
-    <ChatFlatlist name={item.name} message={item.message} />
+    <ChatFlatlist name={item.name.first} message={item.gender} />
   );
+
+  React.useEffect(() => {
+    fetch("https://randomuser.me/api/?results=5&exc=login,location,registered")
+      .then((res) => res.json())
+      .then((data) => {
+        setUserData(data.results);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <SafeAreaView style={ChatRoomStyles.container}>
       <Header route={route} navigation={navigation} />
@@ -30,12 +41,10 @@ export default function ChatRoom({ route, navigation }) {
           elevation: 15,
         }}
       >
-        <VirtualizedList
-          data={dataUser}
+        <FlatList
+          data={userData}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          // getItemCount={(data) => 5}
-          // getItem={addUser}
+          keyExtractor={(item) => item.name.first}
         />
       </View>
     </SafeAreaView>
