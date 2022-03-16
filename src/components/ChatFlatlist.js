@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Image,
-  Pressable,
-  SafeAreaView,
-  Text,
-  View,
-  FlatList,
-} from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 
 // styles
 import { ChatRoomStyles } from "../screen/Styles";
@@ -24,7 +17,6 @@ export default function ChatFlatlist({ name, message, picture }) {
             <Image
               source={{ uri: `${picture}` }}
               style={{ height: 50, width: 50, resizeMode: "cover" }}
-              onp
             />
           </Pressable>
         </View>

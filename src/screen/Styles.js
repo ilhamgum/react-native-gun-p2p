@@ -1,6 +1,22 @@
 import { StyleSheet, Platform, StatusBar } from "react-native";
 
 // Basic style
+const shadow = {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+
+    elevation: 7,
+  },
+  allCenter = {
+    alignItems: "center",
+    justifyContent: "center",
+  };
+
 export const BasicStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -13,10 +29,10 @@ export const BasicStyles = StyleSheet.create({
 export const HomeStyles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     justifyContent: "flex-start",
     alignItems: "center",
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    backgroundColor: "#fff",
   },
   banner: {
     backgroundColor: "#F3FAFE",
@@ -29,17 +45,8 @@ export const HomeStyles = StyleSheet.create({
     minWidth: 300,
     minHeight: 90,
     borderRadius: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.7,
-    shadowRadius: 5,
-
-    elevation: 17,
+    ...allCenter,
+    ...shadow,
   },
   loginText: {
     color: "#fff",
@@ -50,17 +57,8 @@ export const HomeStyles = StyleSheet.create({
     minWidth: 300,
     minHeight: 90,
     borderRadius: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-
-    elevation: 7,
+    ...allCenter,
+    ...shadow,
   },
   signupText: {
     color: "#000",
@@ -74,9 +72,9 @@ export const SignStyles = StyleSheet.create({
     marginHorizontal: "10%",
   },
   title: {
+    fontSize: 35,
     textAlign: "center",
     marginBottom: 30,
-    fontSize: 35,
   },
   buttonWrap: {
     flexDirection: "row",
@@ -87,14 +85,13 @@ export const SignStyles = StyleSheet.create({
     borderRadius: 50,
     overflow: "hidden",
     alignSelf: "center",
+    ...shadow,
   },
   button: {
     backgroundColor: "#476CF0",
     minWidth: 130,
     minHeight: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    elevation: 5,
+    ...allCenter,
   },
   buttonText: {
     color: "#fff",

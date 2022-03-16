@@ -10,16 +10,26 @@ import Header from "../../components/Header";
 
 export default function ChatRoom({ route, navigation }) {
   const [userData, setUserData] = React.useState([]);
+  const [isLoading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
     fetch("https://randomuser.me/api/?results=10&exc=login,location,registered")
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false);
         setUserData(data.results);
-        console.log(data.results);
       })
       .catch((err) => console.log(err));
-  }, []);
+  };
+
+  const handleRefresh = () => {
+    setLoading(true);
+    getData();
+  };
 
   return (
     <SafeAreaView style={ChatRoomStyles.container}>
@@ -45,6 +55,8 @@ export default function ChatRoom({ route, navigation }) {
             />
           )}
           keyExtractor={(item) => item.name.first}
+          refreshing={isLoading}
+          onRefresh={handleRefresh}
         />
       </View>
     </SafeAreaView>
