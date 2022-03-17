@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, TouchableOpacity, Button } from "react-native";
 
 // screens
-import ChatRoom from "../screen/postlogin/ChatRoom";
+import Chat from "../screen/postlogin/Chat";
 import Profile from "../screen/postlogin/Profile";
 import AddNewChat from "../screen/postlogin/AddNewChat";
 
@@ -44,7 +44,7 @@ const Tab = createBottomTabNavigator();
 export default function PostLogin() {
   return (
     <Tab.Navigator
-      initialRouteName="ChatRoom"
+      initialRouteName="Chat"
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
@@ -71,8 +71,8 @@ export default function PostLogin() {
       }}
     >
       <Tab.Screen
-        name="ChatRoom"
-        component={ChatRoom}
+        name="Chat"
+        component={Chat}
         options={{
           tabBarLabel: "Chat",
           tabBarIcon: ({ color, size }) => (

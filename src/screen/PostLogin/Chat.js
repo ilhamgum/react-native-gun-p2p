@@ -8,7 +8,7 @@ import { ChatRoomStyles } from "../Styles";
 import ChatFlatlist from "../../components/ChatFlatlist";
 import Header from "../../components/Header";
 
-export default function ChatRoom({ route, navigation }) {
+export default function Chat({ route, navigation }) {
   const [userData, setUserData] = React.useState([]);
   const [isLoading, setLoading] = React.useState(false);
 

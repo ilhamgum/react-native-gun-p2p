@@ -40,7 +40,7 @@ export default function SignIn({ navigation }) {
               android_ripple={{ color: "black" }}
               onPress={() =>
                 navigation.navigate("TabRouter", {
-                  screen: "ChatRoom",
+                  screen: "Chat",
                   params: { name: username },
                 })
               }
