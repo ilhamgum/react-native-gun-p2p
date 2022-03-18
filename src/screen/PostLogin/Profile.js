@@ -1,26 +1,28 @@
 import React from "react";
+import { LinearGradient } from "expo-linear-gradient";
 import {
   SafeAreaView,
-  Image,
+  ImageBackground,
   View,
   FlatList,
   Dimensions,
   Text,
+  StyleSheet,
 } from "react-native";
 
 import { BasicStyles } from "../Styles";
 
 const DATA = [
   {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    id: 75,
     title: "First Item",
   },
   {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    id: 36,
     title: "Second Item",
   },
   {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    id: 58,
     title: "Third Item",
   },
 ];
@@ -28,65 +30,78 @@ const DATA = [
 export default function Profile() {
   return (
     <SafeAreaView style={BasicStyles.container}>
-      <View
-        style={{
-          height: (Dimensions.get("window").height * 45) / 100,
-          width: Dimensions.get("window").width,
-          overflow: "hidden",
-          borderBottomLeftRadius: 30,
-          borderBottomRightRadius: 30,
-        }}
-      >
+      <View style={styles.photoProfileContainer}>
         <FlatList
           data={DATA}
           renderItem={({ id }) => (
             <View>
-              <Image
-                style={{
-                  width: Dimensions.get("window").width,
-                  height: 400,
-                  resizeMode: "cover",
-                }}
+              <ImageBackground
+                style={styles.photoProfile}
                 source={{
-                  uri: `https://picsum.photos/seed/${id}/400`,
+                  uri: `https://randomuser.me/api/portraits/men/75.jpg`,
                 }}
-              />
+              >
+                <LinearGradient
+                  colors={["transparent", "rgba(0,0,0,.6)"]}
+                  style={styles.photoProfileTint}
+                />
+              </ImageBackground>
             </View>
           )}
           horizontal
           pagingEnabled
         />
       </View>
-      <View
-        style={{
-          marginTop: -65,
-          alignItems: "center",
-          width: Dimensions.get("window").width,
-          height: (Dimensions.get("window").height * 20) / 100,
-        }}
-      >
-        <View
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 40,
-            backgroundColor: "#fff",
-            width: (Dimensions.get("window").width * 80) / 100,
-            height: (Dimensions.get("window").height * 18) / 100,
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 3,
-            },
-            shadowOpacity: 0.3,
-            shadowRadius: 5,
-
-            elevation: 7,
-          }}
-        >
-          <Text style={{ fontSize: 22 }}>User Name</Text>
+      <View style={styles.contentBoxContainer}>
+        <View style={styles.contentBox}>
+          <Text style={{ fontSize: 20 }}>User Name</Text>
+          <Text style={{ fontSize: 20 }}>Contacts</Text>
         </View>
       </View>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  photoProfileContainer: {
+    height: (Dimensions.get("window").height * 45) / 100,
+    width: Dimensions.get("window").width,
+    overflow: "hidden",
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+  },
+  photoProfile: {
+    width: Dimensions.get("window").width,
+    height: 400,
+    resizeMode: "cover",
+  },
+  photoProfileTint: {
+    position: "absolute",
+    height: 400,
+    width: Dimensions.get("window").width,
+  },
+  contentBoxContainer: {
+    marginTop: -50,
+    alignItems: "center",
+    width: Dimensions.get("window").width,
+    height: (Dimensions.get("window").height * 20) / 100,
+  },
+  contentBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    borderRadius: 40,
+    backgroundColor: "#fff",
+    width: (Dimensions.get("window").width * 80) / 100,
+    height: (Dimensions.get("window").height * 15) / 100,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+
+    elevation: 7,
+  },
+});

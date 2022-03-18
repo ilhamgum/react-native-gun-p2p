@@ -8,9 +8,12 @@ const Stack = createNativeStackNavigator();
 import Home from "../screen/Home";
 import SignIn from "../screen/SignIn";
 import SignUp from "../screen/SignUp";
-import tabRouter from "./tabRouter";
+import ChatRoom from "../screen/postlogin/ChatRoom";
 
-export default function StackRouter() {
+// router
+import TabRouter from "./tabRouter";
+
+export default function StackRouter({ route }) {
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -19,7 +22,8 @@ export default function StackRouter() {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
-      <Stack.Screen name="TabRouter" component={tabRouter} />
+      <Stack.Screen name="ChatRoom" component={ChatRoom} />
+      <Stack.Screen name="TabRouter" component={TabRouter} />
     </Stack.Navigator>
   );
 }

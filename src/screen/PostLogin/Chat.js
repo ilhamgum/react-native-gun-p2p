@@ -1,12 +1,21 @@
 import React from "react";
-import { SafeAreaView, View, FlatList } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  FlatList,
+  Pressable,
+  Image,
+  Text,
+} from "react-native";
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from "react-native-popup-menu";
 
 // styles
 import { ChatRoomStyles } from "../Styles";
-
-// components
-import ChatFlatlist from "../../components/ChatFlatlist";
-import Header from "../../components/Header";
 
 export default function Chat({ route, navigation }) {
   const [userData, setUserData] = React.useState([]);
@@ -33,8 +42,33 @@ export default function Chat({ route, navigation }) {
 
   return (
     <SafeAreaView style={ChatRoomStyles.container}>
-      <Header route={route} navigation={navigation} />
-      {/* chat flatlist */}
+      {/* Header */}
+      <View style={ChatRoomStyles.header}>
+        <View style={ChatRoomStyles.headerWrap}>
+          <Pressable onPress={() => navigation.navigate("Profile")}>
+            <Image
+              source={{ uri: "https://picsum.photos/200" }}
+              style={ChatRoomStyles.headerImage}
+            />
+          </Pressable>
+          <Text>Helo, {route.params.name} </Text>
+          <Menu>
+            <MenuTrigger text="Menu" />
+            <MenuOptions>
+              <MenuOption
+                onSelect={() => alert("Ilham Gumilang 2022")}
+                text="Credits"
+              />
+              <MenuOption
+                onSelect={() => navigation.navigate("Home")}
+                text="Logout"
+              />
+            </MenuOptions>
+          </Menu>
+        </View>
+      </View>
+      {/* End Header */}
+      {/* Chat Flatlist */}
       <View
         style={{
           marginTop: 5,
@@ -48,17 +82,37 @@ export default function Chat({ route, navigation }) {
         <FlatList
           data={userData}
           renderItem={({ item }) => (
-            <ChatFlatlist
-              name={item.name.first}
-              message={item.gender}
-              picture={item.picture.medium}
-            />
+            <Pressable
+              onPress={() =>
+                navigation.navigate("ChatRoom", { name: item.name.first })
+              }
+            >
+              <View style={ChatRoomStyles.item}>
+                <View style={ChatRoomStyles.profilePhotoContainer}>
+                  <Pressable
+                    onPress={() => console.log(item.name.first)}
+                    android_ripple={{ color: "#fff", borderless: true }}
+                    style={ChatRoomStyles.profilePhoto}
+                  >
+                    <Image
+                      source={{ uri: `${item.picture.medium}` }}
+                      style={{ height: 50, width: 50, resizeMode: "cover" }}
+                    />
+                  </Pressable>
+                </View>
+                <View style={ChatRoomStyles.messageContainer}>
+                  <Text style={ChatRoomStyles.name}>{item.name.first}</Text>
+                  <Text style={ChatRoomStyles.message}>{item.gender}</Text>
+                </View>
+              </View>
+            </Pressable>
           )}
           keyExtractor={(item) => item.name.first}
           refreshing={isLoading}
           onRefresh={handleRefresh}
         />
       </View>
+      {/* End Chat Flatlist */}
     </SafeAreaView>
   );
 }

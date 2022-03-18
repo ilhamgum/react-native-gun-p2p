@@ -41,7 +41,7 @@ const NewChatButton = ({ children, onPress }) => {
 
 const Tab = createBottomTabNavigator();
 
-export default function PostLogin() {
+export default function TabRouter() {
   return (
     <Tab.Navigator
       initialRouteName="Chat"
@@ -84,10 +84,6 @@ export default function PostLogin() {
         name="AddChat"
         component={AddNewChat}
         options={{
-          headerShown: true,
-          headerTitle: () => (
-            <Button onPress={() => alert("This is a button!")} title="Back" />
-          ),
           tabBarShowLabel: false,
           tabBarIcon: () => <Ionicons name="add" color={"#fff"} size={40} />,
           tabBarButton: (props) => <NewChatButton {...props} />,

@@ -1,8 +1,7 @@
 import React from "react";
 import { Pressable, Text, SafeAreaView, View, TextInput } from "react-native";
 
-import { SignStyles } from "./Styles";
-import { BasicStyles } from "./Styles";
+import { SignStyles, BasicStyles } from "./Styles";
 
 export default function SignIn({ navigation }) {
   const [username, onUsernameChange] = React.useState("");
