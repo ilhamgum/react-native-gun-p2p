@@ -10,22 +10,8 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+// styles
 import { BasicStyles } from "../Styles";
-
-const Messages = [
-  {
-    id: 1,
-    user: 1,
-    message: "Hello, how are you? I miss u",
-    time: "19:20",
-  },
-  {
-    id: 2,
-    user: 2,
-    message: "Heeyy, i'm fine here. I miss u too",
-    time: "19:21",
-  },
-];
 
 export default function ChatRoom({ route, navigation }) {
   const [message, setMessage] = React.useState("");
@@ -41,10 +27,29 @@ export default function ChatRoom({ route, navigation }) {
           backgroundColor: "#F3FAFE",
         }}
       >
+        {/* back button */}
+        <Pressable
+          style={{
+            width: 40,
+            height: 35,
+            backgroundColor: "#599CFF",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 50,
+            position: "absolute",
+            left: 10,
+          }}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="arrow-back" color={"#fff"} size={22} />
+        </Pressable>
+
+        {/* profile */}
         <View
           style={{
             alignItems: "center",
             flexDirection: "row",
+            marginLeft: Dimensions.get("window").width * 0.13,
           }}
         >
           <Pressable onPress={() => navigation.navigate("Profile")}>
@@ -59,6 +64,7 @@ export default function ChatRoom({ route, navigation }) {
           </Text>
         </View>
       </View>
+
       {/* chat room background polish */}
       <View style={{ backgroundColor: "#F3FAFE" }}>
         {/* chat room box */}
@@ -92,7 +98,6 @@ export default function ChatRoom({ route, navigation }) {
             {/* container */}
             <View
               style={{
-                height: 50,
                 width: "93%",
                 marginVertical: 8,
                 flexDirection: "row-reverse",
@@ -101,19 +106,18 @@ export default function ChatRoom({ route, navigation }) {
               {/* chat bubble */}
               <View
                 style={{
-                  flex: 4,
-                  height: "100%",
+                  maxWidth: "90%",
                   backgroundColor: "#476CF0",
-                  borderTopLeftRadius: 50,
-                  borderTopRightRadius: 50,
-                  borderBottomLeftRadius: 50,
+                  borderTopLeftRadius: 15,
+                  borderTopRightRadius: 15,
+                  borderBottomLeftRadius: 15,
                   justifyContent: "center",
                   alignItems: "flex-end",
                   padding: 10,
                 }}
               >
-                <Text style={{ color: "#fee", fontSize: 15 }}>
-                  Hello, how are you? I miss u
+                <Text style={{ color: "#fff", fontSize: 15 }}>
+                  Hello, how are you?
                 </Text>
               </View>
               <View
@@ -127,46 +131,8 @@ export default function ChatRoom({ route, navigation }) {
                 <Text style={{ color: "#999", fontSize: 12 }}>19:20</Text>
               </View>
             </View>
-            {/* second-person chat bubble */}
-            {/* container */}
-            <View
-              style={{
-                height: 50,
-                width: "93%",
-                marginVertical: 8,
-                flexDirection: "row",
-              }}
-            >
-              {/* chat bubble */}
-              <View
-                style={{
-                  flex: 4,
-                  height: "100%",
-                  backgroundColor: "#8298EA",
-                  borderTopLeftRadius: 50,
-                  borderTopRightRadius: 50,
-                  borderBottomRightRadius: 50,
-                  justifyContent: "center",
-                  alignItems: "flex-start",
-                  padding: 10,
-                }}
-              >
-                <Text style={{ color: "#fee", fontSize: 15 }}>
-                  Heeyy, i'm fine here. I miss u too
-                </Text>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: "flex-start",
-                  justifyContent: "flex-end",
-                  marginLeft: 5,
-                }}
-              >
-                <Text style={{ color: "#999", fontSize: 12 }}>19:20</Text>
-              </View>
-            </View>
           </View>
+
           {/* text input box */}
           <View
             style={{

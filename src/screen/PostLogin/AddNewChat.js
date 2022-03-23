@@ -108,7 +108,12 @@ export default function AddNewChat({ route, navigation }) {
                   <View style={ChatRoomStyles.item}>
                     <View style={ChatRoomStyles.profilePhotoContainer}>
                       <Pressable
-                        onPress={() => console.log(item.name.first)}
+                        onPress={() =>
+                          navigation.navigate("ChatRoom", {
+                            name: item.name.first,
+                            photo: item.picture.medium,
+                          })
+                        }
                         android_ripple={{ color: "#fff", borderless: true }}
                         style={ChatRoomStyles.profilePhoto}
                       >
