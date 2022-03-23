@@ -21,7 +21,7 @@ export const BasicStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
 

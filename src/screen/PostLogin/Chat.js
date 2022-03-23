@@ -76,6 +76,14 @@ export default function Chat({ route, navigation }) {
           borderTopLeftRadius: 30,
           borderTopRightRadius: 30,
           height: "100%",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 7,
+          },
+          shadowOpacity: 0.43,
+          shadowRadius: 9.51,
+
           elevation: 15,
         }}
       >
@@ -84,7 +92,10 @@ export default function Chat({ route, navigation }) {
           renderItem={({ item }) => (
             <Pressable
               onPress={() =>
-                navigation.navigate("ChatRoom", { name: item.name.first })
+                navigation.navigate("ChatRoom", {
+                  name: item.name.first,
+                  photo: item.picture.medium,
+                })
               }
             >
               <View style={ChatRoomStyles.item}>
