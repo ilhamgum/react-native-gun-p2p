@@ -1,10 +1,40 @@
 import React from "react";
-import { View, Text, Pressable, Dimensions, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  Dimensions,
+  SafeAreaView,
+  FlatList,
+  Image,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { BasicStyles, HomeStyles } from "../Styles";
+import { BasicStyles, ChatRoomStyles } from "../Styles";
 
 export default function AddNewChat({ route, navigation }) {
+  const [userData, setUserData] = React.useState([]);
+  const [isLoading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    fetch("https://randomuser.me/api/?results=10&exc=login,location,registered")
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        setUserData(data.results);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleRefresh = () => {
+    setLoading(true);
+    getData();
+  };
+
   return (
     <SafeAreaView style={BasicStyles.container}>
       {/* header */}
@@ -57,7 +87,50 @@ export default function AddNewChat({ route, navigation }) {
 
             elevation: 15,
           }}
-        ></View>
+        >
+          <View
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <FlatList
+              data={userData}
+              renderItem={({ item }) => (
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate("ChatRoom", {
+                      name: item.name.first,
+                      photo: item.picture.medium,
+                    })
+                  }
+                >
+                  <View style={ChatRoomStyles.item}>
+                    <View style={ChatRoomStyles.profilePhotoContainer}>
+                      <Pressable
+                        onPress={() => console.log(item.name.first)}
+                        android_ripple={{ color: "#fff", borderless: true }}
+                        style={ChatRoomStyles.profilePhoto}
+                      >
+                        <Image
+                          source={{ uri: `${item.picture.medium}` }}
+                          style={{ height: 50, width: 50, resizeMode: "cover" }}
+                        />
+                      </Pressable>
+                    </View>
+                    <View style={ChatRoomStyles.messageContainer}>
+                      <Text style={ChatRoomStyles.name}>{item.name.first}</Text>
+                      <Text style={ChatRoomStyles.message}>{item.gender}</Text>
+                    </View>
+                  </View>
+                </Pressable>
+              )}
+              keyExtractor={(item) => item.name.first}
+              refreshing={isLoading}
+              onRefresh={handleRefresh}
+            />
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );

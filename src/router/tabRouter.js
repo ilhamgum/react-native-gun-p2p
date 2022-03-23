@@ -84,6 +84,7 @@ export default function TabRouter() {
         name="AddChat"
         component={AddNewChat}
         options={{
+          tabBarStyle: { display: "none" },
           tabBarShowLabel: false,
           tabBarIcon: () => <Ionicons name="add" color={"#fff"} size={40} />,
           tabBarButton: (props) => <NewChatButton {...props} />,

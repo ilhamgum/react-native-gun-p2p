@@ -87,41 +87,48 @@ export default function Chat({ route, navigation }) {
           elevation: 15,
         }}
       >
-        <FlatList
-          data={userData}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() =>
-                navigation.navigate("ChatRoom", {
-                  name: item.name.first,
-                  photo: item.picture.medium,
-                })
-              }
-            >
-              <View style={ChatRoomStyles.item}>
-                <View style={ChatRoomStyles.profilePhotoContainer}>
-                  <Pressable
-                    onPress={() => console.log(item.name.first)}
-                    android_ripple={{ color: "#fff", borderless: true }}
-                    style={ChatRoomStyles.profilePhoto}
-                  >
-                    <Image
-                      source={{ uri: `${item.picture.medium}` }}
-                      style={{ height: 50, width: 50, resizeMode: "cover" }}
-                    />
-                  </Pressable>
+        <View
+          style={{
+            height: "75%",
+            width: "100%",
+          }}
+        >
+          <FlatList
+            data={userData}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() =>
+                  navigation.navigate("ChatRoom", {
+                    name: item.name.first,
+                    photo: item.picture.medium,
+                  })
+                }
+              >
+                <View style={ChatRoomStyles.item}>
+                  <View style={ChatRoomStyles.profilePhotoContainer}>
+                    <Pressable
+                      onPress={() => console.log(item.name.first)}
+                      android_ripple={{ color: "#fff", borderless: true }}
+                      style={ChatRoomStyles.profilePhoto}
+                    >
+                      <Image
+                        source={{ uri: `${item.picture.medium}` }}
+                        style={{ height: 50, width: 50, resizeMode: "cover" }}
+                      />
+                    </Pressable>
+                  </View>
+                  <View style={ChatRoomStyles.messageContainer}>
+                    <Text style={ChatRoomStyles.name}>{item.name.first}</Text>
+                    <Text style={ChatRoomStyles.message}>{item.gender}</Text>
+                  </View>
                 </View>
-                <View style={ChatRoomStyles.messageContainer}>
-                  <Text style={ChatRoomStyles.name}>{item.name.first}</Text>
-                  <Text style={ChatRoomStyles.message}>{item.gender}</Text>
-                </View>
-              </View>
-            </Pressable>
-          )}
-          keyExtractor={(item) => item.name.first}
-          refreshing={isLoading}
-          onRefresh={handleRefresh}
-        />
+              </Pressable>
+            )}
+            keyExtractor={(item) => item.name.first}
+            refreshing={isLoading}
+            onRefresh={handleRefresh}
+          />
+        </View>
       </View>
       {/* End Chat Flatlist */}
     </SafeAreaView>
