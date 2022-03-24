@@ -5,7 +5,11 @@ import {
   FlatList,
   Pressable,
   Image,
+  ImageBackground,
   Text,
+  Modal,
+  TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import {
   Menu,
@@ -13,13 +17,18 @@ import {
   MenuOption,
   MenuTrigger,
 } from "react-native-popup-menu";
+import { Ionicons } from "@expo/vector-icons";
 
 // styles
 import { ChatRoomStyles } from "../Styles";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Chat({ route, navigation }) {
   const [userData, setUserData] = React.useState([]);
   const [isLoading, setLoading] = React.useState(false);
+
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [modalData, setModalData] = React.useState(null);
 
   React.useEffect(() => {
     getData();
@@ -38,6 +47,11 @@ export default function Chat({ route, navigation }) {
   const handleRefresh = () => {
     setLoading(true);
     getData();
+  };
+
+  const openModal = (item) => {
+    setModalData(item);
+    setModalVisible(!modalVisible);
   };
 
   return (
@@ -100,14 +114,16 @@ export default function Chat({ route, navigation }) {
                 onPress={() =>
                   navigation.navigate("ChatRoom", {
                     name: item.name.first,
-                    photo: item.picture.medium,
+                    photo: item.picture.thumbnail,
                   })
                 }
               >
                 <View style={ChatRoomStyles.item}>
                   <View style={ChatRoomStyles.profilePhotoContainer}>
                     <Pressable
-                      onPress={() => console.log(item.name.first)}
+                      onPress={() => {
+                        openModal(item);
+                      }}
                       android_ripple={{ color: "#fff", borderless: true }}
                       style={ChatRoomStyles.profilePhoto}
                     >
@@ -131,6 +147,92 @@ export default function Chat({ route, navigation }) {
         </View>
       </View>
       {/* End Chat Flatlist */}
+
+      {/* Profile modal */}
+      <Modal animationType="fade" transparent={true} visible={modalVisible}>
+        <Pressable
+          style={{
+            width: "100%",
+            height: "100%",
+            alignItems: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          }}
+          onPress={() => {
+            setModalData(null);
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View
+            style={{
+              width: "80%",
+              marginTop: "30%",
+              borderRadius: 10,
+              overflow: "hidden",
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 4,
+              elevation: 5,
+            }}
+          >
+            <ImageBackground
+              style={{
+                width: "100%",
+                height: 300,
+              }}
+              source={{
+                uri: modalData
+                  ? modalData.picture.large
+                  : "https://via.placeholder.com/600/92c952",
+              }}
+            >
+              <LinearGradient
+                colors={["transparent", "rgba(0,0,0,.8)"]}
+                style={{
+                  position: "absolute",
+                  height: 400,
+                  width: "100%",
+                }}
+              />
+            </ImageBackground>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={{
+                width: "100%",
+                height: 50,
+                backgroundColor: "#292929",
+                flexDirection: "row",
+              }}
+              onPress={() => {
+                setModalData(null);
+                setModalVisible(!modalVisible);
+                navigation.navigate("ChatRoom", {
+                  name: modalData.name.first,
+                  photo: modalData.picture.thumbnail,
+                });
+              }}
+            >
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "row",
+                }}
+              >
+                <Ionicons name="chatbubbles" color={"#C5CEEE"} size={25} />
+                <Text style={{ color: "#C5CEEE", marginLeft: 5, fontSize: 16 }}>
+                  {"Chat"}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </Pressable>
+      </Modal>
+      {/* End Profile modal */}
     </SafeAreaView>
   );
 }
