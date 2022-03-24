@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   FlatList,
   Image,
+  StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -36,7 +37,13 @@ export default function AddNewChat({ route, navigation }) {
   };
 
   return (
-    <SafeAreaView style={BasicStyles.container}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "#F3FAFE",
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      }}
+    >
       {/* header */}
       <View
         style={{

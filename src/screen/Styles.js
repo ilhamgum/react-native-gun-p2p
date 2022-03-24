@@ -37,7 +37,8 @@ export const HomeStyles = StyleSheet.create({
   banner: {
     backgroundColor: "#F3FAFE",
     width: "100%",
-    height: "35%",
+    height: "40%",
+    marginTop: "-10%",
   },
   loginButton: {
     marginTop: "10%",
@@ -110,7 +111,7 @@ export const ChatRoomStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   // header
   header: {
@@ -139,7 +140,7 @@ export const ChatRoomStyles = StyleSheet.create({
     alignItems: "center",
   },
   messageContainer: {
-    marginHorizontal: 10,
+    marginHorizontal: 15,
   },
   name: {
     fontSize: 18,

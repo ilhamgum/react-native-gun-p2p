@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   Dimensions,
+  StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -17,7 +18,13 @@ export default function ChatRoom({ route, navigation }) {
   const [message, setMessage] = React.useState("");
 
   return (
-    <SafeAreaView style={BasicStyles.container}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "#F3FAFE",
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      }}
+    >
       {/* header */}
       <View
         style={{
