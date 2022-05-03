@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 import Home from "../screen/Home";
 import SignIn from "../screen/SignIn";
 import SignUp from "../screen/SignUp";
-import ChatRoom from "../screen/postlogin/ChatRoom";
+import ChatRoom from "../screen/PostLogin/ChatRoom";
 
 // router
 import TabRouter from "./tabRouter";
