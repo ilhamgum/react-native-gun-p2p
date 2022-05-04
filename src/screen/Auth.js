@@ -11,8 +11,8 @@ import {
 import { SignStyles, BasicStyles } from "./Styles";
 
 export default function Auth({ navigation }) {
-  const [username, onUsernameChange] = React.useState("");
-  const [password, onPasswordChange] = React.useState("");
+  const [username, setUsername] = React.useState("");
+  const [key, setKey] = React.useState("");
   const [hasAccount, setAccount] = React.useState(false);
   const toggleState = () => {
     setAccount(!hasAccount);
@@ -26,8 +26,8 @@ export default function Auth({ navigation }) {
           <TextInput
             placeholder="input the key"
             style={SignStyles.textInput}
-            value={username}
-            onChangeText={onUsernameChange}
+            value={key}
+            onChangeText={setKey}
           />
           <View style={SignStyles.buttonWrap}>
             <View style={SignStyles.pressableView}>
@@ -79,7 +79,7 @@ export default function Auth({ navigation }) {
             placeholder="input username"
             style={SignStyles.textInput}
             value={username}
-            onChangeText={onUsernameChange}
+            onChangeText={setUsername}
           />
           <View style={SignStyles.buttonWrap}>
             <View style={SignStyles.pressableView}>
