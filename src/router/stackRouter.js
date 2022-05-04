@@ -6,8 +6,7 @@ const Stack = createNativeStackNavigator();
 
 // Screens
 import Home from "../screen/Home";
-import SignIn from "../screen/SignIn";
-import SignUp from "../screen/SignUp";
+import Auth from "../screen/Auth";
 import ChatRoom from "../screen/PostLogin/ChatRoom";
 
 // router
@@ -20,8 +19,7 @@ export default function StackRouter({ route }) {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="SignIn" component={SignIn} />
-      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="Auth" component={Auth} />
       <Stack.Screen name="ChatRoom" component={ChatRoom} />
       <Stack.Screen name="TabRouter" component={TabRouter} />
     </Stack.Navigator>

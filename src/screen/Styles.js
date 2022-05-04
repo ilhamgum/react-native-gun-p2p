@@ -25,47 +25,6 @@ export const BasicStyles = StyleSheet.create({
   },
 });
 
-// Home Screen
-export const HomeStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-  banner: {
-    backgroundColor: "#F3FAFE",
-    width: "100%",
-    height: "40%",
-    marginTop: "-10%",
-  },
-  loginButton: {
-    marginTop: "10%",
-    backgroundColor: "#476CF0",
-    minWidth: 300,
-    minHeight: 90,
-    borderRadius: 50,
-    ...allCenter,
-    ...shadow,
-  },
-  loginText: {
-    color: "#fff",
-  },
-  signupButton: {
-    marginTop: "5%",
-    backgroundColor: "#fff",
-    minWidth: 300,
-    minHeight: 90,
-    borderRadius: 50,
-    ...allCenter,
-    ...shadow,
-  },
-  signupText: {
-    color: "#000",
-  },
-});
-
 // SignIn & SignUp Screen
 export const SignStyles = StyleSheet.create({
   formWrap: {
