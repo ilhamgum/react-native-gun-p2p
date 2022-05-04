@@ -9,7 +9,6 @@ import {
   Text,
   Modal,
   TouchableOpacity,
-  StatusBar,
 } from "react-native";
 import {
   Menu,
@@ -18,6 +17,9 @@ import {
   MenuTrigger,
 } from "react-native-popup-menu";
 import { Ionicons } from "@expo/vector-icons";
+
+// gun
+import { useAuth, useAuthDispatch, logoutUser } from "../../contexts";
 
 // styles
 import { ChatRoomStyles } from "../Styles";
@@ -29,6 +31,9 @@ export default function Chat({ route, navigation }) {
 
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalData, setModalData] = React.useState(null);
+  // user info
+  const profile = useAuth();
+  const dispatch = useAuthDispatch();
 
   React.useEffect(() => {
     getData();
@@ -65,7 +70,7 @@ export default function Chat({ route, navigation }) {
               style={ChatRoomStyles.headerImage}
             />
           </Pressable>
-          <Text>Helo, {route.params.name} </Text>
+          <Text>Helo, {profile.username}</Text>
           <Menu>
             <MenuTrigger text="Menu" />
             <MenuOptions>
@@ -73,10 +78,7 @@ export default function Chat({ route, navigation }) {
                 onSelect={() => alert("Ilham Gumilang 2022")}
                 text="Credits"
               />
-              <MenuOption
-                onSelect={() => navigation.navigate("Home")}
-                text="Logout"
-              />
+              <MenuOption onSelect={() => logoutUser(dispatch)} text="Logout" />
             </MenuOptions>
           </Menu>
         </View>

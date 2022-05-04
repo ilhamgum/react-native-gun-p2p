@@ -80,7 +80,6 @@ export default function Auth({ navigation }) {
           />
           <View style={SignStyles.buttonWrap}>
             <View style={SignStyles.pressableView}>
-              {console.log(navigation)}
               <Pressable
                 style={SignStyles.button}
                 android_ripple={{ color: "black" }}
