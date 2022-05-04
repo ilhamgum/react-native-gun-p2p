@@ -1,4 +1,4 @@
-import { authUser, createUser, logoutUser } from "./action";
+import { authUser, createUser, logoutUser } from "./actions";
 import { AuthProvider, useAuthDispatch, useAuth } from "./context";
 
 export {
