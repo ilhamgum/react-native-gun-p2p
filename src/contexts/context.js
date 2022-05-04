@@ -5,7 +5,7 @@ export const AuthContext = React.createContext();
 export const AuthDispatchContext = React.createContext();
 
 export function useAuth() {
-  const context = useContext(AuthContext);
+  const context = React.useContext(AuthContext);
   if (context === undefined) {
     throw new Error("useAuth must be used within a AuthProvider");
   }
@@ -14,7 +14,7 @@ export function useAuth() {
 }
 
 export function useAuthDispatch() {
-  const context = useContext(AuthDispatchContext);
+  const context = React.useContext(AuthDispatchContext);
   if (context === undefined) {
     throw new Error("useAuthDispatch must be used within a AuthProvider");
   }
@@ -23,7 +23,7 @@ export function useAuthDispatch() {
 }
 
 export const AuthProvider = ({ children }) => {
-  const [user, dispatch] = useReducer(AuthReducer, initialState);
+  const [user, dispatch] = React.useReducer(AuthReducer, initialState);
 
   return (
     <AuthContext.Provider value={user}>
