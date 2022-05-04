@@ -7,13 +7,15 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { useAuthDispatch, authUser, createUser } from "../contexts";
 
 import { SignStyles, BasicStyles } from "./Styles";
 
 export default function Auth({ navigation }) {
+  const [hasAccount, setAccount] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [key, setKey] = React.useState("");
-  const [hasAccount, setAccount] = React.useState(false);
+  const dispatch = useAuthDispatch();
   const toggleState = () => {
     setAccount(!hasAccount);
   };
@@ -36,21 +38,16 @@ export default function Auth({ navigation }) {
                 android_ripple={{ color: "black" }}
                 onPress={() => navigation.navigate("Home")}
               >
-                <Text style={SignStyles.buttonText}>Back Home</Text>
+                <Text style={SignStyles.buttonText}>Back</Text>
               </Pressable>
             </View>
             <View style={SignStyles.pressableView}>
               <Pressable
                 style={SignStyles.button}
                 android_ripple={{ color: "black" }}
-                onPress={() =>
-                  navigation.navigate("TabRouter", {
-                    screen: "Chat",
-                    params: { name: username },
-                  })
-                }
+                onPress={() => authUser(dispatch, { key: key })}
               >
-                <Text style={SignStyles.buttonText}>Continue</Text>
+                <Text style={SignStyles.buttonText}>Login</Text>
               </Pressable>
             </View>
           </View>
@@ -83,26 +80,22 @@ export default function Auth({ navigation }) {
           />
           <View style={SignStyles.buttonWrap}>
             <View style={SignStyles.pressableView}>
+              {console.log(navigation)}
               <Pressable
                 style={SignStyles.button}
                 android_ripple={{ color: "black" }}
                 onPress={() => navigation.navigate("Home")}
               >
-                <Text style={SignStyles.buttonText}>Back Home</Text>
+                <Text style={SignStyles.buttonText}>Back</Text>
               </Pressable>
             </View>
             <View style={SignStyles.pressableView}>
               <Pressable
                 style={SignStyles.button}
                 android_ripple={{ color: "black" }}
-                onPress={() =>
-                  navigation.navigate("TabRouter", {
-                    screen: "Chat",
-                    params: { name: username },
-                  })
-                }
+                onPress={() => createUser(dispatch, { username: username })}
               >
-                <Text style={SignStyles.buttonText}>Continue</Text>
+                <Text style={SignStyles.buttonText}>Register</Text>
               </Pressable>
             </View>
           </View>

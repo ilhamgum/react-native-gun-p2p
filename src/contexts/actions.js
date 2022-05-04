@@ -1,3 +1,6 @@
+import useGun from "../hooks/useGun";
+const { user, SEA } = useGun();
+
 export async function authUser(dispatch, payload) {
   console.log("dispatch", dispatch);
   console.log("payload", payload);

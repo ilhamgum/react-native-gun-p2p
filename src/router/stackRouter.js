@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
-// Screens
+// screens
 import Home from "../screen/Home";
 import Auth from "../screen/Auth";
 import ChatRoom from "../screen/PostLogin/ChatRoom";
