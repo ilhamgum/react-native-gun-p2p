@@ -10,6 +10,8 @@ import {
   StyleSheet,
 } from "react-native";
 
+import { useAuth } from "../../contexts";
+
 import { BasicStyles } from "../Styles";
 
 const DATA = [
@@ -28,6 +30,7 @@ const DATA = [
 ];
 
 export default function Profile() {
+  const profile = useAuth();
   return (
     <SafeAreaView style={BasicStyles.container}>
       <View style={styles.photoProfileContainer}>
@@ -57,6 +60,7 @@ export default function Profile() {
           <Text style={{ fontSize: 20 }}>User Name</Text>
           <Text style={{ fontSize: 20 }}>Contacts</Text>
         </View>
+        <Text style={{ marginTop: 30 }}>key : {profile.key}</Text>
       </View>
     </SafeAreaView>
   );
