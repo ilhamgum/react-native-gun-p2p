@@ -1,2 +1,2 @@
-# tugas-akhir
-for completing the endless suffering of this cruel campus assignment
+# React Native using GUN for P2P Chatting
+project paused
